@@ -1,6 +1,7 @@
 
 package oopdolgozat_1;
 
+import java.awt.Checkbox;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
@@ -12,6 +13,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
 import javax.swing.border.TitledBorder;
@@ -31,13 +33,13 @@ public class OOPdolgozat_1 {
     }
     
     
-     public void ini(){
+     private void ini(){
         Formkinezet();
         MenuKinezet();
         PinKodGombok();
      }
      
-     public void Formkinezet(){
+     private void Formkinezet(){
         frame = new JFrame("Dolgozat");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         Dimension kep = Toolkit.getDefaultToolkit().getScreenSize();
@@ -45,7 +47,7 @@ public class OOPdolgozat_1 {
         frame.setSize(410, 350);
         frame.setVisible(true);
      }
-    public void MenuKinezet(){
+    private void MenuKinezet(){
         JMenuBar mb=new JMenuBar();  
         JMenu ProgramMenu =new JMenu("program"); 
         JMenu JatekelrendMenu = new JMenu("Jatek elrendezes");
@@ -57,37 +59,48 @@ public class OOPdolgozat_1 {
         ProgramMenu.add(KilepAL);
         JatekelrendMenu.add(VizszintesAL);
         JatekelrendMenu.add(FuggolegesAL);
-        JMenu almenu = new JMenu("al Menu");
+        
         mb.add(ProgramMenu);  
         mb.add(JatekelrendMenu); 
         frame.setJMenuBar(mb);  
        
     }
         
-    public void PinKodGombok(){ 
-        LayoutManager lymGridFrame = new GridLayout(1, 1);
-        frame.setLayout(lymGridFrame);
-        
+    private void PinKodGombok(){ 
         JPanel p1=new JPanel();   
+        LayoutManager lymGridFrame = new GridLayout(2, 1);
+        p1.setLayout(lymGridFrame);
+        JTextField Iromezo = new JTextField();
         JPanel p2=new JPanel();   
         JTabbedPane tp=new JTabbedPane();  
         tp.setSize(150, 150);
         tp.add("Bejelentkezes",p1);  
         tp.add("Játék",p2);
-        p1.setBorder(new TitledBorder("Pinkód"));
-        p1.setSize(50, 50);
+        JPanel pinesmez = new JPanel();
+        JPanel chekboxosmez = new JPanel();
+        chekboxosmez.add(Iromezo);
+        chekboxosmez.setSize(200, 250);
+        chekboxosmez.setBorder(new TitledBorder("Beállítás"));
+        p1.add(pinesmez);
+        p1.add(chekboxosmez);
+        LayoutManager pinesGrid = new GridLayout(4, 1);
+        pinesmez.setLayout(pinesGrid);
+        pinesmez.setSize(200, 250);
+        pinesmez.setBorder(new TitledBorder("Pinkód"));
+        
         
         GombLista = new JButton[gombokDB];
         gombokIni();
         for (JButton g : GombLista) {
-            p1.add(g);
+            pinesmez.add(g);
         }
         
         frame.add(tp);    
           
      }
     
-    public void gombokIni(){
+    
+    private void gombokIni(){
         JButton gomb1 = new JButton("1");
         JButton gomb2 = new JButton("2");
         JButton gomb3 = new JButton("3");
