@@ -2,12 +2,9 @@
 package oopdolgozat_1;
 
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -15,11 +12,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+
 import javax.swing.WindowConstants;
 import javax.swing.border.TitledBorder;
 
+
 public class OOPdolgozat_1 {
-    
+    private static final int gombokDB = 10;
     private JFrame frame;
     private JButton[] GombLista;
     
@@ -35,6 +34,7 @@ public class OOPdolgozat_1 {
      public void ini(){
         Formkinezet();
         MenuKinezet();
+        PinKodGombok();
      }
      
      public void Formkinezet(){
@@ -46,31 +46,45 @@ public class OOPdolgozat_1 {
         frame.setVisible(true);
      }
     public void MenuKinezet(){
-          JMenuBar mb=new JMenuBar();  
-          JMenu ProgramMenu =new JMenu("program"); 
-          JMenu JatekelrendMenu = new JMenu("Jatek elrendezes");
-
-          mb.add(ProgramMenu);  
-          mb.add(JatekelrendMenu); 
-          frame.setJMenuBar(mb);  
-          frame.setSize(400,400);  
-          frame.setLayout(null);  
-  
+        JMenuBar mb=new JMenuBar();  
+        JMenu ProgramMenu =new JMenu("program"); 
+        JMenu JatekelrendMenu = new JMenu("Jatek elrendezes");
+        JMenuItem UjraAL=new JMenuItem("Ujra");  
+        JMenuItem KilepAL=new JMenuItem("Kilépés");
+        JMenuItem VizszintesAL=new JMenuItem("Vízszintes");  
+        JMenuItem FuggolegesAL=new JMenuItem("Fuggoleges");
+        ProgramMenu.add(UjraAL);
+        ProgramMenu.add(KilepAL);
+        JatekelrendMenu.add(VizszintesAL);
+        JatekelrendMenu.add(FuggolegesAL);
+        JMenu almenu = new JMenu("al Menu");
+        mb.add(ProgramMenu);  
+        mb.add(JatekelrendMenu); 
+        frame.setJMenuBar(mb);  
+       
     }
         
     public void PinKodGombok(){ 
-        LayoutManager lymGridAlso = new GridLayout(3,1);
-        JTabbedPane ablakosPanel = new JTabbedPane();
-        ablakosPanel.setBorder(new TitledBorder("Pinkód"));
+        LayoutManager lymGridFrame = new GridLayout(1, 1);
+        frame.setLayout(lymGridFrame);
         
-//        LayoutManager lymFlowBal = new FlowLayout(FlowLayout.LEFT);
-//        ablakosPanel = new JTabbedPane(lymFlowBal);
-
-
-        for (JButton jButton : GombLista) {
-            ablakosPanel.add(jButton);
+        JPanel p1=new JPanel();   
+        JPanel p2=new JPanel();   
+        JTabbedPane tp=new JTabbedPane();  
+        tp.setSize(150, 150);
+        tp.add("Bejelentkezes",p1);  
+        tp.add("Játék",p2);
+        p1.setBorder(new TitledBorder("Pinkód"));
+        p1.setSize(50, 50);
+        
+        GombLista = new JButton[gombokDB];
+        gombokIni();
+        for (JButton g : GombLista) {
+            p1.add(g);
         }
-        frame.add(ablakosPanel);
+        
+        frame.add(tp);    
+          
      }
     
     public void gombokIni(){
@@ -85,16 +99,16 @@ public class OOPdolgozat_1 {
         JButton gomb9 = new JButton("9");
         JButton gomb0 = new JButton("0");
 
-        GombLista[0].add(gomb1);
-        GombLista[1].add(gomb2);
-        GombLista[2].add(gomb3);
-        GombLista[3].add(gomb4);
-        GombLista[4].add(gomb5);
-        GombLista[5].add(gomb6);
-        GombLista[6].add(gomb7);
-        GombLista[7].add(gomb8);
-        GombLista[8].add(gomb9);
-        GombLista[9].add(gomb0);
+        GombLista[0] = (gomb1);
+        GombLista[1] = (gomb2);
+        GombLista[2] = (gomb3);
+        GombLista[3] = (gomb4);
+        GombLista[4] =(gomb5);
+        GombLista[5] = (gomb6);
+        GombLista[6] = (gomb7);
+        GombLista[7] = (gomb8);
+        GombLista[8] = (gomb9);
+        GombLista[9] = (gomb0);
     }
      
 }
