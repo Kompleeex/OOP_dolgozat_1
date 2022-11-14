@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
@@ -45,14 +46,16 @@ public class OOPdolgozat_1 {
         frame.setVisible(true);
      }
     public void MenuKinezet(){
-         JMenuBar FelsoMenu = new JMenuBar();
-         JMenu BejelentkezesMenuGomb = new JMenu("bejelentkezes");
-         BejelentkezesMenuGomb.setMnemonic(KeyEvent.VK_P);
-         FelsoMenu.add(BejelentkezesMenuGomb);
-         JMenu JatekMenuGomb = new JMenu("játék");
-         JatekMenuGomb.setMnemonic(KeyEvent.VK_E);
-         FelsoMenu.add(JatekMenuGomb);
-         frame.add(FelsoMenu);
+          JMenuBar mb=new JMenuBar();  
+          JMenu ProgramMenu =new JMenu("program"); 
+          JMenu JatekelrendMenu = new JMenu("Jatek elrendezes");
+
+          mb.add(ProgramMenu);  
+          mb.add(JatekelrendMenu); 
+          frame.setJMenuBar(mb);  
+          frame.setSize(400,400);  
+          frame.setLayout(null);  
+  
     }
         
     public void PinKodGombok(){ 
